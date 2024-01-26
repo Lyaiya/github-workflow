@@ -27,10 +27,9 @@
         run: |
           file_path=${{ inputs.file-path }}
           tag_name=${{ github.ref_name }}
-          file_name=${fullfile##*/}
-          file_ext=${fullfile##*.}
+          file_name=${file_path##*/}
+          file_ext=${file_path##*.}
           final_file_path=${file_name}-${tag_name}.${file_ext}
-          echo ${final_file_path}
           mv "${file_path}" "${final_file_path}"
           echo "final_file_path=${final_file_path}" >> "$GITHUB_OUTPUT"
 
